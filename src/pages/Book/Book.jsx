@@ -1,13 +1,17 @@
 import React, { use } from 'react'
 import { FaRegStarHalfStroke } from "react-icons/fa6";
+import { Link } from 'react-router';
 
 const Book = ({ singleBook }) => {
     // const bookdata = use(bookPromise)
 
-    const { bookName, author, image, rating, category } = singleBook;
+    const { bookName, bookId, author, image, rating, category, review, tags,
+        yearOfPublishing, publisher
+
+    } = singleBook;
 
     return (
-        <div className="card bg-base-100 w-96 shadow-sm border p-6">
+       <Link to={`/bookDetails/${bookId}`}> <div className="card bg-base-100 w-96 shadow-sm border p-6">
             <figure className='p-4 bg-gray-100 w-2/3 mx-auto'>
                 <img
                     className='h-[166px]'
@@ -15,17 +19,27 @@ const Book = ({ singleBook }) => {
                     alt="Shoes" />
             </figure>
             <div className="card-body">
+                <div className='flex justify-center gap-5'>
+                    {
+                        tags.map(tag => <button>{tag}</button>)
+                    }
+                </div>
                 <h2 className="card-title">
                     {bookName}
-                    <div className="badge badge-secondary">NEW</div>
+                    <div className="badge badge-secondary">{yearOfPublishing
+                    }</div>
                 </h2>
-                <p>A card component has a figure, a body part, and inside body there are title and actions parts</p>
+                <p>By : {publisher}</p>
+
+                <div className='border-t-1 border-dashed'>
+
+                </div>
                 <div className="card-actions justify-end">
                     <div className="badge badge-outline">{category}</div>
                     <div className="badge badge-outline">{rating}<FaRegStarHalfStroke /></div>
                 </div>
             </div>
-        </div>
+        </div></Link>
     );
 };
 
