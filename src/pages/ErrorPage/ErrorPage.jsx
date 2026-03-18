@@ -1,9 +1,11 @@
 import React from 'react'
+import errorimage from '../../assets/404.webp'
 
 const ErrorPage = () => {
   return (
     <div>
-        <h1>Page not Found</h1>
+        <img src={errorimage} alt="" />
+
     </div>
   );
 };
